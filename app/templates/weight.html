@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Unit Convert</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans:100,300,400,500,700,900"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1 class="page-title">Unit Convert</h1>
+    <div class="units-title-grid">
+      <a class="convert-unit" href="/convert-length">Length</a>
+      <a class="convert-unit" href="/convert-weight">Weight</a>
+      <a class="convert-unit" href="/convert-temperature">Temperature</a>
+    </div>
+    {% if not result %}
+    <form action="#" method="post">
+      <div class="input-value-grid">
+        <label class="units" for="number">Enter the weight to convert</label>
+        <input class="input-value" type="text" name="number" id="number" required/>
+        <label class="units" for="convert-from">Unit to Convert from</label>
+        <input
+          class="input-value"
+          type="text"
+          name="convert-from"
+          id="convert-from"
+          required
+        />
+        <label class="units" for="convert-to">Unit to Convert to</label>
+        <input
+          class="input-value"
+          type="text"
+          name="convert-to"
+          id="convert-to"
+          required
+        />
+        <button class="button-style" type="submit">Convert</button>
+      </div>
+    </form>
+    {% else %}
+
+    <label class="units">Result of your calculation</label>
+    <p class="result">{{ result }}</p>
+    <button class="button-style">
+      <a href="/weight-length" class="reset-button">Reset</a>
+    </button>
+    
+    {% endif %}
+
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+    <p>Weight: mg, g, kg, oz, lb.</p>
+  </body>
+</html>
